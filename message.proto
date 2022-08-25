@@ -1,0 +1,25 @@
+
+syntax = "proto2";
+package chatserver;
+
+option cc_generic_services = true;
+
+message UserRegisterMessage
+{
+    required string user = 1;
+    required string passwd = 2;
+    required int64 timestamp = 3;
+};
+
+
+message UserRegisterReplyMessage
+{
+    required bool is_valid = 1;
+    optional string errorstr = 2;
+};
+
+
+service UserService
+{
+    rpc UserRigster(UserRegisterMessage) returns (UserRegisterReplyMessage);
+};
